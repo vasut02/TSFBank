@@ -1,7 +1,18 @@
 .NavBar{
     padding: 20px;
-    width: 100%;
+    width: 97.2%;
     color:white;
     font-size: 25px;
     background: #111;
+}
+
+.Link{
+    color: white;
+    margin: auto 20px; 
+    transition: 250ms all ease;
+    text-decoration: none;
+}
+
+.Link:hover{
+    color: crimson;
 }

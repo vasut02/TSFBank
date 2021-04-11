@@ -1,0 +1,52 @@
+.Login{
+    background: linear-gradient(45deg, #49a09d, #5f2c82);
+    height: 91vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Login h1{
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    margin: auto;
+}
+
+.Login-form input , select , .Login-form {
+    padding:20px;
+    margin: 10px;
+    border-radius: 8px;
+    outline: none;
+    text-decoration: wavy;
+    border: none;
+    color: #5f2c82;
+    background: rgba(255, 255, 255, 0.2); 
+} 
+
+.Login-form button{
+    padding:10px;
+    margin: 10px auto;
+    width: fit-content;
+    cursor: pointer;
+    border-radius: 8px;
+
+    outline: none;
+    text-decoration: wavy;
+    border: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.2); 
+}
+
+.Login-form{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.Login-form input:focus ,select:focus , .Login-form input:hover{
+    background: rgba(255,255,255,0.3)
+}

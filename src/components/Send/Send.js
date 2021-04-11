@@ -1,47 +1,92 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Dropdown from './Dropdown'
-
+import './Send.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Send = () => {
 
     const [amountToSend, setAmountToSend] = useState('')
     const [reciever, setReciever] = useState('')
+    const [sender, setSender] = useState('')
+    const toastOptions = {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        }
 
     const SendCoins = (e) => {
         e.preventDefault();
 
-        if (amountToSend && reciever !== "--Select--") {
+        if (amountToSend && reciever !== "--Select--" && sender !== "--Select--" && reciever !== sender) {
             const data = {
+                sender,
                 amountToSend,
                 reciever
             }
             console.log(data);
-            // axios.post('http://localhost:8000/send', data)
-            //     .then((req) => {
-            //         console.log(req.data);
-            //     })
+            axios.post('http://localhost:8000/sendMoney', data)
+                .then((req) => {
+                    console.log(req.data);
+                    toast.dark(req.data , toastOptions);
+                })
             setAmountToSend('');
             setReciever('');
-        }
-    }
+            setSender('');
 
+        }
+
+    }
     return (
-        <div>
-            <form onSubmit={SendCoins}>
-                <input value={amountToSend} type="number" class="form-control" onChange={e => { setAmountToSend(e.target.value) }} placeholder="Enter amount to send"></input>
-                <label for="sel1">Select list:</label>
-                <select 
-                    value={reciever} 
-                    onChange={e => { setReciever(e.target.value) }}  
-                    placeholder="Enter Reciever's Name" 
-                    class="form-control">
-                        <option>--Select--</option>
-                    <Dropdown/>
+        <div className='Login' id='Login'>
+            <p>
+                <h1>Send Money</h1>
+            </p>
+            <form className='Login-form' onSubmit={SendCoins}>
+                <label htmlFor="exampleInputPassword1" className="form-label">Select Sender</label>
+                <select
+                    value={sender}
+                    onChange={e => { setSender(e.target.value) }}
+                    placeholder="Enter Reciever's Name">
+                    <option>--Select--</option>
+                    <Dropdown />
                 </select>
-                <button type="submit" >Send</button>
+                <label htmlFor="exampleInputEmail1" className="form-label">Amount</label>
+                <input
+                    value={amountToSend}
+                    type="number"
+                    onChange={e => { setAmountToSend(e.target.value) }}
+                    placeholder="Enter amount to send"
+                    aria-describedby="amountHelp"
+                ></input>
+                <label htmlFor="exampleInputPassword1" className="form-label">Select Reciever</label>
+                <select
+                    value={reciever}
+                    onChange={e => { setReciever(e.target.value) }}
+                    placeholder="Enter Reciever's Name">
+                    <option>--Select--</option>
+                    <Dropdown />
+                </select>
+                <button type='submit'>Send</button>
             </form>
-        </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={true}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+        </div >
+
     )
 }
 

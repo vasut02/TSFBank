@@ -11,10 +11,9 @@ const TableColoumn = ({ data , page}) => {
 
     ) : (
         <tr>
-        <td>{data.name}</td>
-        <td>{data.email}</td>
-        <td>{data.subject}</td>
-        <td>{data.message}</td>
+        <td>{data.sender}</td>
+        <td>{data.receiver}</td>
+        <td>{data.transamount}</td>
     </tr> 
     )
 }

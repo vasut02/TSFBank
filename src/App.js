@@ -1,10 +1,11 @@
 import NavBar from './components/navbar/Navabar';
 import './App.css';
 import Home from "./components/Home/Home";
-import Transaction from "./components/Transaction/Transaction";
+import Transaction from "./components/Cutomer/Transaction";
 import Customer from "./components/Cutomer/Customer"
 import Send from './components/Send/Send'
 import { Redirect, BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Footer from './components/Home/Footer'
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route exact path='/transaction' component={Transaction} />
           <Redirect from='*' to='/' />
         </Switch>
+        <Footer/>
       </div>
     </Router>
   );

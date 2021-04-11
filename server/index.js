@@ -8,11 +8,6 @@ app.use(cors());
 const bodyParser = require('body-parser');
 var jsonParser = bodyParser.json()
 
-app.post('/send', jsonParser ,  (req, res) => {
-    console.log(req.body);
-    res.send('Req recieved')
-})
-
 const BankController = require('./routes/authRoutes.js')
 app.use(BankController);
 

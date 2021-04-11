@@ -17,6 +17,9 @@ const Navabar = () => {
                             <li className="nav-item">
                                 <Link to="/customer" className="nav-link active" aria-current="page" href="#">Customer</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link to="/transaction" className="nav-link active" aria-current="page" href="#">Transaction</Link>
+                            </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Transfer Money

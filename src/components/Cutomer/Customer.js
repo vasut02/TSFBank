@@ -3,13 +3,14 @@ import axios from 'axios'
 import serverURL from '../../serverURL'
 import TableRow from './TableRow'
 import './Table.css'
+import AddCustomer from './AddCustomer'
 
 const Customer = () => {
 
     const ENDPT = `http://${serverURL}`
     const [data, setData] = useState();
 
-    const getCustomer  = ()=>{
+    const getCustomer = ()=>{
         axios.get(`${ENDPT}/get/customer`).then((res) => {
             setData(res.data);
             console.log(res.data);
@@ -27,7 +28,7 @@ const Customer = () => {
         <div className='customer' >
             <h2>Customers </h2>
             <div className="table-wrapper">
-                <button>Add Customer</button>
+            <AddCustomer getCustomer={getCustomer} />
                 <table className="fl-table">
                     <thead>
                         <tr>

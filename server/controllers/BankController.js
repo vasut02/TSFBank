@@ -1,20 +1,48 @@
 const Customer = require('../Models/Customer');
 const Transaction = require('../Models/Transaction');
 
+const alertError = (err) => {
+    let errors = { name: '', email: '', mobileNo: '', balance: '' }
+
+    console.log('error msg', err.message);
+
+    if (err.message === 'Incorrect Email') {
+        errors.email = 'Incorrect Email';
+    }
+    if (err.message === 'Incorrect Password') {
+        errors.password = 'Incorrect Password';
+    }
+
+    if (err.code === 11000) {
+        errors.email = 'This Email-id Already Exists';
+        return errors;
+    }
+    if (err.message.includes('User validation failed')) {
+        Object.values(err.errors).forEach(({ properties }) => {
+            errors[properties.path] = properties.message;
+        })
+    }
+    return errors;
+}
+
+
 module.exports.getTransaction = async (req, res) => {
     try {
-        const sender = "afa@vg.com"
-        const receiver = "deww@cf.com"
-        const transamount = 79
+        // const sender = "afaa@vg.com"
+        // const receiver = "dewws@cf.com"
+        // const transamount = 79
 
-        // console.log(data);
-        Transaction.create({ sender, receiver, transamount }).then(
-            (newTransaction) => {
-                console.log(newTransaction);
-            }).catch((error) => {
-                console.log('error', error);
-            })
+        // // console.log(data);
+        // Transaction.create({ sender, receiver, transamount }).then(
+        //     (newTransaction) => {
+        //         console.log(newTransaction);
+        //     }).catch((error) => {
+        //         console.log('error', error);
+        //     })
 
+        // var schemaObj = Transaction.findOne();
+        // console.log(schemaObj);
+        
         Transaction.find({}).then((data) => {
             res.status(200).json({ data });
         }).catch((error) => {
@@ -29,22 +57,9 @@ module.exports.getCustomer = async (req, res) => {
     console.log('req reciveed from year',)
     try {
 
-        // Transaction.deleteMany({}).then((res) =>
+        // Customer.deleteMany({}).then((res) =>
         //     res.send(' DELETE DELETE DELETE')
         // )
-
-        // to add temp customer 
-
-        // const name = "Vasu Tiwari"
-        // const email = "VasuTiwar69ijk@gamil.com"
-        // const mobileNo = "9876543210"
-        // const balance = "120000"
-        // Customer.create({ name, email, mobileNo, balance } ).then(
-        //     (newCustomer) => {
-        //         console.log(newCustomer);
-        //     }).catch((error) => {
-        //         console.log('error', error);
-        //     })
 
         Customer.find({}).then((data) => {
             res.status(200).json({ data });
@@ -73,7 +88,7 @@ module.exports.sendMoney = async (req, res) => {
         .catch((err) => {
             console.log('error occured while making transaction', err)
             res.send("error occured while making transaction")
-            
+
         });
 
     if (senderCustomer && recieverCustomer) {
@@ -86,17 +101,17 @@ module.exports.sendMoney = async (req, res) => {
         recieverCustomer.balance += parseInt(amountToSend);
         const transaction2 = await recieverCustomer.save();
 
-        // const sender = "afa"
-        // const receiver = "deww"
-        // const trans_amount = 79
+        const sender = senderCustomer.email
+        const receiver = recieverCustomer.email
+        const transamount = amountToSend
 
         // console.log(data);
-        // Transaction.create({ sender , receiver , trans_amount }).then(
-        //     (newTransaction) => {
-        //         console.log(newTransaction);
-        //     }).catch((error) => {
-        //         console.log('error', error);
-        //     })
+        Transaction.create({ sender , receiver , transamount }).then(
+            (newTransaction) => {
+                console.log(newTransaction);
+            }).catch((error) => {
+                console.log('error', error);
+            })
 
         res.send("Transaction Done Succesfully");
     } else {
@@ -106,19 +121,17 @@ module.exports.sendMoney = async (req, res) => {
 }
 
 module.exports.addCustomer = async (req, res) => {
-    const { name, email, mobileNo, balance } = req.body
+    var { name, email, mobileNo, balance } = req.body
 
-    try {
-        Customer.create({ name, email, mobileNo, balance }).then(
-            (newCustomer) => {
-                console.log(newCustomer);
-                res.status(200).send({ newCustomer });
-            }).catch((error) => {
-                const errors = alertError(error);
-                console.log('error', errors);
-                res.status(200).json({ errors });
-            })
-    } catch (error) {
+    console.log(req.body , mobileNo);
+    Customer.create({ name, email, mobileNo, balance }).then(
+        (newCustomer) => {
+            console.log(newCustomer);
+            res.status(200).send({ newCustomer });
+        }).catch((error) => {
+            // const errors = alertError(error);
+            console.log('error', error);
+            res.status(200).json({ error });
+        })
 
-    }
 }

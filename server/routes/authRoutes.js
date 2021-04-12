@@ -10,5 +10,6 @@ var jsonParser = bodyParser.json()
 router.get('/get/customer',BankController.getCustomer);
 router.get('/get/transaction',BankController.getTransaction );
 router.post('/sendMoney' , jsonParser ,BankController.sendMoney);
+router.post('/addCustomer' , jsonParser ,BankController.addCustomer);
 
 module.exports = router;

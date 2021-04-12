@@ -1,18 +1,16 @@
 .NavBar{
-    padding: 20px;
-    width: 97.2%;
-    color:white;
-    font-size: 25px;
-    background: #111;
+    background: rgb(0, 0, 0);
 }
 
-.Link{
+.navbar-toggler {
     color: white;
-    margin: auto 20px; 
-    transition: 250ms all ease;
-    text-decoration: none;
 }
 
-.Link:hover{
-    color: crimson;
+.navbar-brand , .nav-link{
+    color: white;
+    transition: 250ms all ease;
+}
+
+.navbar-brand:hover , .nav-link:hover{
+    color: #1382f1;
 }

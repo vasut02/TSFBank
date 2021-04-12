@@ -91,56 +91,6 @@ section .title::after{
     font-family: "Open Sans", sans-serif;
 }
 
-/* 
-/* navbar styling 
-.navbar{
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    z-index: 999;
-    padding: 30px 0;
-    font-family: 'Ubuntu', sans-serif;
-    transition: all 0.3s ease;
-}
-.navbar.sticky{
-    padding: 15px 0;
-    background: white;
-    box-shadow: 2px 1px 10px #888888b0;
-}
-.navbar .max-width{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.navbar .logo a{
-    color: black;
-    font-size: 35px;
-    font-weight: 600;
-}
-.navbar .logo a span{
-    color: var(--blue);
-    transition: all 0.3s ease;
-}
-
-.navbar .menu li{
-    list-style: none;
-    display: inline-block;
-}
-.navbar .menu li a{
-    display: block;
-    color: black;
-    font-size: 18px;
-    font-weight: 500;
-    margin-left: 25px;
-    transition: color 0.3s ease;
-}
-.navbar .menu li a:hover{
-    color: var(--blue);
-}
-.navbar.sticky .menu li a:hover{
-    color: black;
-} */
-
 /* menu btn styling */
 .menu-btn{
     color: black;
@@ -214,7 +164,6 @@ section .title::after{
     content: "";
     right: -200px;
     top: -200px;
-
     overflow: hidden;
     background: url(./illustration/background.svg) no-repeat;
     background-size: cover;
@@ -643,9 +592,10 @@ footer{
 footer span a{
     color: var(--yellow);
     text-decoration: none;
+    outline: none;
 }
 footer span a:hover{
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 

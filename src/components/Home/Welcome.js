@@ -1,5 +1,6 @@
 import React from 'react'
-import home from './illustration/home.png'
+import { Link } from "react-router-dom";
+import BankLogo from './illustration/BankLogo.png'
 
 const Welcome = () => {
 
@@ -15,7 +16,10 @@ const Welcome = () => {
                             <h2 className="text-10"> TSF BANKING SYSTEM</h2>
                             <div className="text-3"> <span className="typing" /></div>
                             <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-                            <a href="#home" >Send</a>
+                            <Link to="/send_money" className="nav-link active" href="#">Send Money</Link>
+                        </div>
+                        <div className="home-right">
+                            <img src={BankLogo}/>
                         </div>
                     </div>
                 </div>

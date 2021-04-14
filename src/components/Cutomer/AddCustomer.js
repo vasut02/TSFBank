@@ -9,6 +9,9 @@ const AddCustomer = (getCustomer) => {
     const [mobileNo, setMobileNo] = useState('');
     const [balance, setBalance] = useState('');
 
+
+    const [loading, setLoading] = useState(false)
+
     const toastOptions = {
         position: "top-right",
         autoClose: 5000,
@@ -22,27 +25,36 @@ const AddCustomer = (getCustomer) => {
     const addCustomer = (e) => {
         e.preventDefault();
 
-        
-        const data = {
-            name,
-            email,
-            mobileNo,
-            balance
-        }
+        if (name && email && mobileNo && balance) {
+            setLoading(true);
 
-        axios.post('http://localhost:8000/addCustomer', data)
-            .then((req) => {
-                console.log(req.data);
-                if (req.data.newCustomer)
-                    toast.dark('New Customer Created Succesfully', toastOptions);
-                else                    
-                    toast.dark('Error Creating New Customer', toastOptions);
-                 getCustomer.getCustomer();
-            })
-        setName('')
-        setBalance('')
-        setEmail('')
-        setMobileNo('')
+            const data = {
+                name,
+                email,
+                mobileNo,
+                balance
+            }
+
+            axios.post('http://localhost:8000/addCustomer', data)
+                .then((req) => {
+                    console.log(req.data);
+                    if (req.data.newCustomer)
+                        toast.dark('New Customer Created Succesfully', toastOptions);
+                    else
+                        toast.error('Error Creating New Customer', toastOptions);
+                    getCustomer.getCustomer();
+                    setLoading(false);
+                }).catch((err) => {
+                    setLoading(false);
+                    console.log("add cutomer error", err);
+                })
+            setName('')
+            setBalance('')
+            setEmail('')
+            setMobileNo('')
+        }else{
+            toast.warn('Fill the Details properly', toastOptions);
+        }
     }
 
     return (
@@ -87,7 +99,10 @@ const AddCustomer = (getCustomer) => {
                                         placeholder="Enter you Balance"
                                         aria-describedby="amountHelp"
                                     ></input>
-                                    <button type='submit'>Add Customer</button>
+                                    <button type='submit' disabled={loading}>
+                                        {loading && <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                                        {!loading && <span>Add Customer</span>}
+                                    </button>
                                 </form>
                                 <ToastContainer
                                     position="bottom-right"

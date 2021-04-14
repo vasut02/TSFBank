@@ -13,8 +13,11 @@ app.use(BankController);
 
 //DataBase
 
+// JMlD7TTzPCAml3zD
+
 const mongoose = require('mongoose');
-const mongoDB = "mongodb://127.0.0.1:27017/TSFBank"
+// const mongoDB = "mongodb://127.0.0.1:27017/TSFBank"
+const mongoDB = "mongodb+srv://vasutiwari:JMlD7TTzPCAml3zD@cluster0.vbxue.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 //connect local database 
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true })

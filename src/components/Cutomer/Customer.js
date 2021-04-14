@@ -47,8 +47,8 @@ const Customer = () => {
         </div>
     )
         : (
-            <div>
-                Loading...
+            <div className='customer loader-conatiner'>
+                <div class="loader"></div>
                 
             </div>
         )

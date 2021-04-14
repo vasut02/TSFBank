@@ -1,0 +1,322 @@
+/*  import google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+:root {
+    /* --blue: #1e90ff; */
+    --blue: #064e94;
+    --blue2: #4a68d8;
+    --blue3: #081158;
+    --light-yellow: rgba(251, 178, 68, 0.2);
+    --yellow: #FBB244;
+  }
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+html{
+    scroll-behavior: smooth;
+}
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+p{
+    color: rgb(0, 0, 0 , 0.5) !important;
+}
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* all similar content styling codes */
+section{
+    padding: 100px 0;
+}
+.max-width{
+    max-width: 1300px;
+    padding: 0 80px;
+    margin: auto;
+}
+
+
+section .title{
+    position: relative;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 60px;
+    padding-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+section .title::after{
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 27px;
+    display: inline-block;
+    padding: 5px 20px;
+    color: #FBB244;
+    text-transform: uppercase;
+    background-color: rgba(251, 178, 68, 0.2);
+    border-radius: 30px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+}
+
+
+  
+/* home section styling */
+.home{
+    display: flex;
+    height: 70vh;
+    padding-bottom: 0px;
+    color: Black;
+    min-height: 90vh;
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: center;
+}
+
+/* .home::after{
+    position: absolute;
+    content: "";
+    right: -200px;
+    top: -200px;
+    overflow: hidden;
+    background: url(./illustration/background.svg) no-repeat;
+    background-size: cover;
+    width: 1113.97px;
+    height: 850.62px; 
+    z-index: -1;
+} */
+
+.home-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;    
+}
+
+.home .max-width{
+    margin: auto 0 auto 30px;
+}
+.text-1{
+    font-size: 27px;
+    display: inline-block;
+    padding: 5px 20px;
+    color: #FBB244;
+    text-transform: uppercase;
+    background-color: rgba(251, 178, 68, 0.2);
+    border-radius: 30px;
+    font-size: 10px;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Open Sans", sans-serif;
+}
+
+
+.home .home-content .text-2{
+    font-size: 75px;
+    font-weight: 600;
+    margin-left: -3px;
+}
+.home .home-content .text-3{
+    font-size: 40px;
+    margin: 5px 0;
+}
+.home .home-content p{
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    text-align: justify;
+    width: 90%;
+    color: rgba(0, 0, 0, 0.5) !important;    /* 4a68d8 */
+}
+
+.home .home-content .text-3 span{
+    color: var(--blue);
+    font-weight: 500;
+    font-size: smaller;
+}
+.home .home-content a{
+    display: inline-block;
+    background: var(--blue);
+    color: #fff;
+    font-size: 15px;
+    padding: 12px 30px;
+    margin-top: 20px;
+    font-weight: 400;
+    border-radius: 6px;
+    border: 2px solid var(--blue);
+    transition: all 0.3s ease;
+}
+.home .home-content a:hover{
+    color: var(--blue);
+    background: none;
+}
+
+.home-left{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    width: 50%;
+    height: 305px;
+}
+.img-wrap{
+    height: 400px;
+}
+
+.img-wrap img{
+    height: 100%;
+}
+
+.home-right img{
+    width: 50vh;
+    margin: 20px;
+}
+
+/* footer section styling */
+footer{
+    background: #111;
+    padding: 15px 23px;
+    color: #fff;
+    text-align: center;
+}
+footer span a{
+    color: var(--yellow);
+    text-decoration: none;
+    outline: none;
+}
+
+
+/* responsive media query start */
+@media (max-width: 1300px) {
+    .home .max-width{
+        margin-left: 0px;
+    }
+    
+}
+
+
+@media (max-width: 991px) {
+    .max-width{
+        padding: 0 50px;
+    }
+
+    .home{
+        height: max-content;
+    }
+
+    
+    .home-left{
+        width: 100%;
+        align-items: center;
+        height: fit-content;
+    }
+    .home-right img{
+        width: 31vh;
+    }
+    .img-wrap{
+        height: 300px;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 947px){
+
+
+    .home .home-content .text-2{
+        font-size: 70px;
+    }
+    .home .home-content .text-3{
+        font-size: 35px;
+    }
+    .home .home-content a{
+        font-size: 23px;
+        padding: 10px 30px;
+    }
+    .max-width{
+        max-width: 930px;
+    }
+    .about .about-content .column{
+        width: 100%;
+    }
+    .about .about-content .left{
+        display: flex;
+        justify-content: center;
+        margin: 0 auto 60px;
+    }
+    .about .about-content .right{
+        flex: 100%;
+    }
+    .services .serv-content .card{
+        width: calc(50% - 10px);
+        margin-bottom: 20px;
+    }
+    .skills .skills-content .column,
+    .contact .contact-content .column{
+        width: 100%;
+        margin-bottom: 35px;
+    }
+}
+
+@media (max-width: 880px){
+    .home-content{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media (max-width: 690px) {
+    .max-width{
+        padding: 0 23px;
+    }
+    .home .home-content .text-2{
+        font-size: 60px;
+    }
+    .home .home-content .text-3{
+        font-size: 32px;
+    }
+    .home .home-content a{
+        font-size: 20px;
+    }
+    .services .serv-content .card{
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .img-wrap{
+        height: 200px;
+        margin-top: 20px;
+    }
+
+    .home .home-content .text-2{
+        font-size: 50px;
+    }
+    .home .home-content .text-3{
+        font-size: 27px;
+    }
+}

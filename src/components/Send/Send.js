@@ -10,6 +10,8 @@ const Send = () => {
     const [amountToSend, setAmountToSend] = useState('')
     const [reciever, setReciever] = useState('')
     const [sender, setSender] = useState('')
+
+    const [loading, setLoading] = useState(false)
     const toastOptions = {
         position: "top-right",
         autoClose: 5000,
@@ -18,12 +20,13 @@ const Send = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        }
+    }
 
     const SendCoins = (e) => {
         e.preventDefault();
 
         if (amountToSend && reciever !== "--Select--" && sender !== "--Select--" && reciever !== sender) {
+            setLoading(true);
             const data = {
                 sender,
                 amountToSend,
@@ -33,13 +36,19 @@ const Send = () => {
             axios.post('http://localhost:8000/sendMoney', data)
                 .then((req) => {
                     console.log(req.data);
-                    toast.dark(req.data , toastOptions);
+                    toast.dark(req.data, toastOptions);
+                    setLoading(false);
+                }).catch((err) => {
+                    toast.error("some error occured", toastOptions);
+                    console.log(err);
+                    setLoading(false);
                 })
             setAmountToSend('');
             setReciever('');
             setSender('');
 
-        }
+        } else
+            toast.info('Fill the Details properly', toastOptions);
 
     }
     return (
@@ -72,7 +81,10 @@ const Send = () => {
                     <option>--Select--</option>
                     <Dropdown />
                 </select>
-                <button type='submit'>Send</button>
+                <button type='submit' disabled={loading}>
+                    {loading && <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>}
+                    {!loading && <span>Send</span>}
+                </button>
             </form>
             <ToastContainer
                 position="bottom-right"

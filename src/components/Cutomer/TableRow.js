@@ -4,7 +4,7 @@ import TableColoumn from './TableColoumn'
 const TableRow = ({ customer , page }) => {
     return customer.data ? (
         <>
-            { customer.data.map((value, i) => (
+            { customer.data.slice(0).reverse().map((value, i) => (
                 <TableColoumn key={i} data={value} page={page} />
             ))}
         </>

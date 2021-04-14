@@ -7,11 +7,10 @@ import AddCustomer from './AddCustomer'
 
 const Customer = () => {
 
-    const ENDPT = `http://${serverURL}`
     const [data, setData] = useState();
 
     const getCustomer = ()=>{
-        axios.get(`${ENDPT}/get/customer`).then((res) => {
+        axios.get(`http://${serverURL}/get/customer`).then((res) => {
             setData(res.data);
             console.log(res.data);
         }).catch((error) => {

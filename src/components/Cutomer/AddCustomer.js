@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import serverURL from '../../serverURL'
 
 const AddCustomer = (getCustomer) => {
     const [name, setName] = useState('')
@@ -35,7 +36,7 @@ const AddCustomer = (getCustomer) => {
                 balance
             }
 
-            axios.post('http://localhost:8000/addCustomer', data)
+            axios.post(`http://${serverURL}/addCustomer`, data)
                 .then((req) => {
                     console.log(req.data);
                     if (req.data.newCustomer)

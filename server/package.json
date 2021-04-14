@@ -1,4 +1,11 @@
 {
+  "main": "index.js",
+  "scripts": {
+    "build":"cd.. && npm run build",
+    "start": "node index.js",
+    "install-client":"cd.. && npm install",
+    "heroku-postbuild":"npm run install-client && npm run build"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "crypto-js": "^4.0.0",

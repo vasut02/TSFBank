@@ -6,11 +6,10 @@ import './Table.css'
 
 const Transaction = () => {
 
-    const ENDPT = `http://${serverURL}`
     const [data, setData] = useState();
 
     const getTransaction  = ()=>{
-        axios.get(`${ENDPT}/get/transaction`).then((res) => {
+        axios.get(`http://${serverURL}/get/transaction`).then((res) => {
             setData(res.data);
             console.log(res.data);
         }).catch((error) => {

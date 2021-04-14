@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Dropdown from './Dropdown'
 import './Send.css'
+import serverURL from '../../serverURL'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -33,7 +34,7 @@ const Send = () => {
                 reciever
             }
             console.log(data);
-            axios.post('http://localhost:8000/sendMoney', data)
+            axios.post(`http://${serverURL}/sendMoney`, data)
                 .then((req) => {
                     console.log(req.data);
                     toast.dark(req.data, toastOptions);
